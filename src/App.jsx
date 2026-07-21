@@ -1,0 +1,81 @@
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import Layout from "./components/Layout.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+
+import Home from "./pages/Home.jsx";
+import Courses from "./pages/Courses.jsx";
+import Awards from "./pages/Awards.jsx";
+import Toppers from "./pages/Toppers.jsx";
+import Gallery from "./pages/Gallery.jsx";
+import Faculties from "./pages/Faculties.jsx";
+import Testimonials from "./pages/Testimonials.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
+import AboutUs from "./pages/AboutUs.jsx";
+import VisionMission from "./pages/VisionMission.jsx";
+import Download from "./pages/Download.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import RefundPolicy from "./pages/RefundPolicy.jsx";
+import StudentRegistration from "./pages/StudentRegistration.jsx";
+import Login from "./pages/Login.jsx";
+
+import ExamInformation from "./pages/sankalp/ExamInformation.jsx";
+import Syllabus from "./pages/sankalp/Syllabus.jsx";
+import AnswerKey from "./pages/sankalp/AnswerKey.jsx";
+import ResultCheck from "./pages/sankalp/ResultCheck.jsx";
+import ResultsPDF from "./pages/sankalp/ResultsPDF.jsx";
+
+import AdminDashboard from "./pages/dashboards/AdminDashboard.jsx";
+import CoordinatorDashboard from "./pages/dashboards/CoordinatorDashboard.jsx";
+import StudentDashboard from "./pages/dashboards/StudentDashboard.jsx";
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+
+            <Route path="/sankalp/exam-information" element={<ExamInformation />} />
+            <Route path="/sankalp/syllabus" element={<Syllabus />} />
+            <Route path="/sankalp/answer-key" element={<AnswerKey />} />
+            <Route path="/sankalp/result-check" element={<ResultCheck />} />
+            <Route path="/sankalp/results-pdf" element={<ResultsPDF />} />
+
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/awards" element={<Awards />} />
+            <Route path="/toppers" element={<Toppers />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/faculties" element={<Faculties />} />
+            <Route path="/testimonials" element={<Testimonials />} />
+
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/vision-mission" element={<VisionMission />} />
+            <Route path="/download" element={<Download />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+
+            <Route path="/register" element={<StudentRegistration />} />
+            <Route path="/login" element={<Login />} />
+
+            <Route
+              path="/admin/dashboard"
+              element={<ProtectedRoute role="admin"><AdminDashboard /></ProtectedRoute>}
+            />
+            <Route
+              path="/coordinator/dashboard"
+              element={<ProtectedRoute role="coordinator"><CoordinatorDashboard /></ProtectedRoute>}
+            />
+            <Route
+              path="/student/dashboard"
+              element={<ProtectedRoute role="student"><StudentDashboard /></ProtectedRoute>}
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  );
+}

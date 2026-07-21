@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { @apply bg-white text-ink font-body; }
+h1,h2,h3,h4 { @apply font-display; }
+
+.container-app { @apply max-w-7xl mx-auto px-5 md:px-8; }
+.section-pad { @apply py-14 md:py-20; }
+.eyebrow { @apply inline-block text-xs md:text-sm tracking-[0.2em] uppercase font-bold text-gold-dark mb-3; }
+.btn-primary { @apply inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-navy-dark font-bold px-6 py-3 rounded-md transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5; }
+.btn-outline { @apply inline-flex items-center gap-2 border-2 border-navy text-navy font-bold px-6 py-3 rounded-md hover:bg-navy hover:text-white transition-all duration-200; }
+.card { @apply bg-white rounded-xl shadow-[0_4px_20px_rgba(11,37,69,0.08)] border border-black/5; }
+.input-field { @apply w-full border border-black/15 rounded-md px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition; }
+.label-field { @apply block text-sm font-semibold text-navy mb-1.5; }
+
+::selection { background: #F0A500; color: #0B2545; }
+
+.focus-ring:focus-visible { outline: 3px solid #F0A500; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
