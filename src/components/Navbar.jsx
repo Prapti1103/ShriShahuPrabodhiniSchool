@@ -12,8 +12,11 @@ const examLinks = [
   { to: "/contact-us", label: "Contact Us" }
 ];
 
-const moreLinks = [{ to: "/contact-us", label: "Contact Us" }];
-
+const moreLinks = [
+  { to: "/about-us", label: "About Us" },
+  { to: "/vision-mission", label: "Vision & Mission" },
+  { to: "/download", label: "Downloads" },
+];
 const navItemClass = ({ isActive }) =>
   `px-2 xl:px-3 py-2 text-sm font-semibold transition-colors rounded-md ${
     isActive ? "text-gold-dark" : "text-white/90 hover:text-gold"
@@ -108,8 +111,7 @@ export default function Navbar() {
   </div>
 </Link>
           {/* Desktop nav */}
-         <div className="hidden xl:flex items-center gap-0">
-            <NavLink to="/" className={navItemClass} end>Home</NavLink>
+         <div className="hidden xl:flex items-center gap-1 ml-20 flex-1">      
             <Dropdown label="Sankalp  Exam" links={examLinks} />
             <NavLink to="/courses" className={navItemClass}>Courses</NavLink>
             <NavLink to="/awards" className={navItemClass}>Awards</NavLink>
@@ -117,7 +119,9 @@ export default function Navbar() {
             <NavLink to="/gallery" className={navItemClass}>Gallery</NavLink>
             <NavLink to="/faculties" className={navItemClass}>Faculties</NavLink>
             <NavLink to="/testimonials" className={navItemClass}>Testimonial</NavLink>
-            <Dropdown label="More" links={moreLinks} />
+            <NavLink to="/contact-us" className={navItemClass}>
+  Contact Us
+</NavLink>
             <NavLink to="/about-us" className={navItemClass}>About Us</NavLink>
             <NavLink to="/vision-mission" className={navItemClass}>Vision</NavLink>
             <NavLink to="/download" className={navItemClass}>Download</NavLink>
