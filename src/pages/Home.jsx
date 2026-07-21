@@ -46,12 +46,32 @@ function Counter({ value, suffix }) {
   );
 }
 
-function SectionHeading({ eyebrow, title, desc, center }) {
+function SectionHeading({
+  eyebrow,
+  title,
+  desc,
+  center,
+  titleClassName = "",
+  eyebrowClassName = "",
+  descClassName = "",
+}) {
   return (
     <div className={`mb-10 ${center ? "text-center max-w-2xl mx-auto" : ""}`}>
-      <span className="eyebrow">{eyebrow}</span>
-      <h2 className="text-2xl md:text-4xl font-bold text-navy">{title}</h2>
-      {desc && <p className="text-muted mt-3">{desc}</p>}
+      <span className={`eyebrow ${eyebrowClassName}`}>
+        {eyebrow}
+      </span>
+
+      <h2
+        className={`text-2xl md:text-4xl font-bold text-navy ${titleClassName}`}
+      >
+        {title}
+      </h2>
+
+      {desc && (
+        <p className={`text-muted mt-3 ${descClassName}`}>
+          {desc}
+        </p>
+      )}
     </div>
   );
 }
@@ -135,7 +155,13 @@ export default function Home() {
       {/* 4. School Features & Counts */}
       <section className="section-pad">
         <div className="container-app">
-          <SectionHeading eyebrow="Why Choose Us" title="School Features & Achievements" center />
+          <SectionHeading
+  eyebrow="Voices"
+  title="What Our Students Say"
+  center
+  titleClassName="!text-white"
+  eyebrowClassName="text-gold"
+/>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {schoolFeatures.map((f) => {
               const Icon = icons[f.icon];
@@ -257,8 +283,13 @@ export default function Home() {
 
       {/* 9. Student Testimonials */}
       <section className="section-pad bg-navy">
-        <div className="container-app">
-          <SectionHeading eyebrow="Voices" title="What Our Students Say" center />
+        <div className="container-app ">
+        <SectionHeading
+  eyebrow="Voices"
+  title="What Our Students Say"
+  center
+  titleClassName="text-white"
+/>
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((t) => (
               <div key={t.id} className="bg-white/5 border border-white/10 rounded-xl p-6 relative">
