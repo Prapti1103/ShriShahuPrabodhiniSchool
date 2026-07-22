@@ -29,7 +29,7 @@ import ResultsPDF from "./pages/sankalp/ResultsPDF.jsx";
 import AdminDashboard from "./pages/dashboards/AdminDashboard.jsx";
 import CoordinatorDashboard from "./pages/dashboards/CoordinatorDashboard.jsx";
 import StudentDashboard from "./pages/dashboards/StudentDashboard.jsx";
-
+import Notification from "./components/Notification.jsx";
 export default function App() {
   return (
     <AuthProvider>
@@ -55,6 +55,7 @@ export default function App() {
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/vision-mission" element={<VisionMission />} />
             <Route path="/download" element={<Download />} />
+            <Route path="/notifications" element={<Notification />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
 

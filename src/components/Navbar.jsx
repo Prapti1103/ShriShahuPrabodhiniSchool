@@ -1,8 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X, ChevronDown, LogIn, Phone } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  LogIn,
+  Phone,
+  Download,
+  Bell
+} from "lucide-react";
 import { useAuth } from "../context/AuthContext.jsx";
 import logo from "../asset/logo.png";
+
 const examLinks = [
   { to: "/sankalp/exam-information", label: "Exam Information" },
   { to: "/sankalp/syllabus", label: "Syllabus" },
@@ -124,7 +133,29 @@ export default function Navbar() {
 </NavLink>
             <NavLink to="/about-us" className={navItemClass}>About Us</NavLink>
             <NavLink to="/vision-mission" className={navItemClass}>Vision</NavLink>
-            <NavLink to="/download" className={navItemClass}>Download</NavLink>
+            <Link
+  to="/download"
+  className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-white/10 transition group"
+  title="Downloads"
+>
+  <Download
+    size={20}
+    className="text-white group-hover:text-gold transition"
+  />
+</Link>
+
+<Link
+  to="/notifications"
+  className="relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-white/10 transition group"
+  title="Notifications"
+>
+  <Bell
+    size={20}
+    className="text-white group-hover:text-gold transition"
+  />
+
+  <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+</Link>
             <Link
   to={loginTarget}
   className="ml-3 flex-shrink-0 flex items-center gap-2 bg-gold hover:bg-gold-dark text-navy-dark font-semibold px-4 py-2 rounded-lg transition-all duration-300"
@@ -156,7 +187,8 @@ export default function Navbar() {
                 { to: "/contact-us", label: "Contact Us" },
                 { to: "/about-us", label: "About Us" },
                 { to: "/vision-mission", label: "Vision & Mission" },
-                { to: "/download", label: "Download" },
+                { to: "/download", label: "Downloads" },
+{ to: "/notifications", label: "Notifications" },
                 { to: loginTarget, label: user ? "Dashboard" : "Login" },
               ].map((l) => (
                 <Link
