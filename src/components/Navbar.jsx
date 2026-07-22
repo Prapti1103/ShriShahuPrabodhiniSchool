@@ -115,7 +115,7 @@ export default function Navbar() {
     </h1>
 
     <span className="text-yellow-400 text-[10px] xl:text-[11px] uppercase tracking-[0.18em] whitespace-nowrap">
-      Sankalp Scholarship Exam
+      Sankalp Exam
     </span>
   </div>
 </Link>
