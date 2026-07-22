@@ -129,9 +129,9 @@ export default function Navbar() {
             <NavLink to="/faculties" className={navItemClass}>Faculties</NavLink>
             <NavLink to="/testimonials" className={navItemClass}>Testimonial</NavLink>
             <NavLink to="/contact-us" className={navItemClass}>
-  Contact Us
+  Contact 
 </NavLink>
-            <NavLink to="/about-us" className={navItemClass}>About Us</NavLink>
+            <NavLink to="/about-us" className={navItemClass}>About </NavLink>
             <NavLink to="/vision-mission" className={navItemClass}>Vision</NavLink>
             <Link
   to="/download"

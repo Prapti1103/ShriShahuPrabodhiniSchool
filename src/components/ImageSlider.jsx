@@ -6,76 +6,115 @@ export default function ImageSlider({ slides, interval = 5000 }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  const next = useCallback(() => setIndex((i) => (i + 1) % slides.length), [slides.length]);
-  const prev = () => setIndex((i) => (i - 1 + slides.length) % slides.length);
+  const next = useCallback(() => {
+    setIndex((prev) => (prev + 1) % slides.length);
+  }, [slides.length]);
+
+  const prev = () => {
+    setIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   useEffect(() => {
     if (paused) return;
-    const t = setInterval(next, interval);
-    return () => clearInterval(t);
+
+    const timer = setInterval(next, interval);
+    return () => clearInterval(timer);
   }, [next, interval, paused]);
 
   return (
-    <div
-      className="relative w-full h-[62vh] min-h-[420px] max-h-[640px] overflow-hidden"
+    <section
+      className="relative w-full h-[68vh] min-h-[480px] max-h-[720px] overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {slides.map((s, i) => (
+      {slides.map((slide, i) => (
         <div
-          key={s.id}
-          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+          key={slide.id}
+          className={`absolute inset-0 transition-opacity duration-700 ${
             i === index ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
         >
-          <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/90 via-navy-dark/30 to-navy-dark/10" />
-          <div className="absolute inset-0 flex items-center">
-            <div className="container-app">
-              <div className="max-w-xl">
-                <span className="eyebrow !text-gold bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
+          {/* Background */}
+          <img
+            src={slide.image}
+            alt={slide.title}
+            className="w-full h-full object-cover"
+          />
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-black/20 to-black/75" />
+
+          {/* Right Content */}
+          <div className="absolute inset-0 flex items-center justify-end">
+            <div className="w-full flex justify-end pr-4 md:pr-10 lg:pr-16 xl:pr-24">
+
+              <div className="max-w-[500px] text-right bg-black/20 backdrop-blur-md rounded-2xl p-6 lg:p-7 border border-white/10 shadow-2xl">
+
+                {/* Badge */}
+                <span className="inline-block px-3 py-1 rounded-full bg-gold/20 border border-gold/40 text-gold text-[10px] md:text-xs uppercase tracking-[0.18em] font-semibold mb-4">
                   Shri Shahu Prabodhini
                 </span>
-                <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4 drop-shadow-lg">
-                  {s.title}
+
+                {/* Heading */}
+                <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight drop-shadow-lg">
+                  {slide.title}
                 </h2>
-                <p className="text-white/85 text-base md:text-lg mb-6">{s.subtitle}</p>
-                <Link to={s.link} className="btn-primary">
-                  {s.linkLabel}
-                </Link>
+
+                {/* Subtitle */}
+                <p className="mt-4 text-sm md:text-base text-white/90 leading-7">
+                  {slide.subtitle}
+                </p>
+
+                {/* Button */}
+                <div className="mt-6 flex justify-end">
+                  <Link
+                    to={slide.link}
+                    className="inline-flex items-center bg-gold hover:bg-yellow-400 text-navy-dark font-semibold px-5 py-2.5 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 text-sm"
+                  >
+                    {slide.linkLabel}
+                  </Link>
+                </div>
+
               </div>
+
             </div>
           </div>
         </div>
       ))}
 
+      {/* Previous */}
       <button
         onClick={prev}
-        aria-label="Previous slide"
-        className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur-sm text-white flex items-center justify-center transition"
+        aria-label="Previous"
+        className="absolute left-5 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/15 backdrop-blur-md border border-white/20 hover:bg-gold hover:text-navy-dark transition-all duration-300 flex items-center justify-center"
       >
         <ChevronLeft size={22} />
       </button>
+
+      {/* Next */}
       <button
         onClick={next}
-        aria-label="Next slide"
-        className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur-sm text-white flex items-center justify-center transition"
+        aria-label="Next"
+        className="absolute right-5 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/15 backdrop-blur-md border border-white/20 hover:bg-gold hover:text-navy-dark transition-all duration-300 flex items-center justify-center"
       >
         <ChevronRight size={22} />
       </button>
 
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-        {slides.map((s, i) => (
+      {/* Indicators */}
+      <div className="absolute bottom-7 left-1/2 -translate-x-1/2 flex gap-2.5 z-30">
+        {slides.map((_, i) => (
           <button
-            key={s.id}
+            key={i}
             onClick={() => setIndex(i)}
-            aria-label={`Go to slide ${i + 1}`}
-            className={`h-1.5 rounded-full transition-all ${
-              i === index ? "w-8 bg-gold" : "w-3 bg-white/50 hover:bg-white/80"
+            aria-label={`Slide ${i + 1}`}
+            className={`rounded-full transition-all duration-300 ${
+              i === index
+                ? "w-8 h-2 bg-gold"
+                : "w-2 h-2 bg-white/60 hover:bg-white"
             }`}
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
