@@ -44,9 +44,9 @@ export const sliderSlides = [
 
 export const featureCounts = [
   { label: "Years of Excellence", value: 38, suffix: "+" },
-  { label: "Students Enrolled", value: 42000, suffix: "+" },
   { label: "Exam Centers", value: 65, suffix: "+" },
   { label: "Expert Faculties", value: 120, suffix: "+" },
+  { label: "Students Enrolled", value: 42000, suffix: "+" },
 ];
 
 export const schoolFeatures = [

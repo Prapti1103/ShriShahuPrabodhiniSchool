@@ -156,11 +156,11 @@ export default function Home() {
       <section className="section-pad">
         <div className="container-app">
           <SectionHeading
-  eyebrow="Voices"
+  eyebrow="Features"
   title="What Our Students Say"
   center
   titleClassName="!text-white"
-  eyebrowClassName="text-gold"
+eyebrowClassName="text-[#F0A500] text-[30px]"
 />
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {schoolFeatures.map((f) => {
@@ -187,99 +187,261 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Courses & Enroll button */}
-      <section className="section-pad bg-cream">
-        <div className="container-app">
-          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-            <SectionHeading eyebrow="Programs" title="Our Courses" />
-            <Link to="/courses" className="btn-outline">View All Courses</Link>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {courses.map((c) => (
-              <div key={c.id} className="card overflow-hidden group">
-                <div className="h-44 overflow-hidden">
-                  <img src={c.image} alt={c.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-bold text-navy mb-1.5">{c.name}</h3>
-                  <p className="text-sm text-muted mb-3">{c.desc}</p>
-                  <div className="flex justify-between items-center text-xs text-muted mb-4">
-                    <span>{c.duration}</span>
-                    <span className="font-bold text-navy">{c.fee}</span>
-                  </div>
-                  <Link to="/register" className="btn-primary w-full justify-center">Enroll Now</Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    {/* 5. Courses & Enroll button */}
+<section className="section-pad bg-cream">
+  <div className="container-app">
 
-      {/* 6. School Exam Toppers */}
-      <section className="section-pad">
-        <div className="container-app">
-          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-            <SectionHeading eyebrow="Hall of Fame" title="Sankalp Exam Toppers" />
-            <Link to="/toppers" className="btn-outline">View All Toppers</Link>
-          </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {toppers.slice(0, 4).map((t) => (
-              <div key={t.id} className="card overflow-hidden text-center relative">
-                <div className="absolute top-3 right-3 bg-ribbon text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow">
-                  {t.score}
-                </div>
-                <img src={t.photo} alt={t.name} className="w-full h-48 object-cover" />
-                <div className="p-4">
-                  <h3 className="font-bold text-navy">{t.name}</h3>
-                  <p className="text-xs text-muted">Class {t.class} · {t.center}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    {/* Center Heading */}
+    <SectionHeading
+      eyebrow="Programs"
+      title="Our Courses"
+      center
+    />
 
-      {/* 7. Gallery */}
-      <section className="section-pad bg-cream">
-        <div className="container-app">
-          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-            <SectionHeading eyebrow="Moments" title="Gallery" />
-            <Link to="/gallery" className="btn-outline">View All Gallery</Link>
+    {/* Courses Grid */}
+    <div className="grid md:grid-cols-3 gap-6 mt-10">
+      {courses.map((c) => (
+        <div
+          key={c.id}
+          className="
+            card
+            overflow-hidden
+            group
+            transition-all
+            duration-500
+            hover:-translate-y-2
+            hover:shadow-2xl
+            hover:ring-2
+            hover:ring-[#F0A500]/40
+          "
+        >
+          <div className="h-44 overflow-hidden">
+            <img
+              src={c.image}
+              alt={c.name}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {gallery.slice(0, 4).map((g) => (
-              <div key={g.id} className="relative rounded-xl overflow-hidden group h-44">
-                <img src={g.image} alt={g.caption} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-navy-dark/0 group-hover:bg-navy-dark/40 transition-colors flex items-end p-3">
-                  <p className="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">{g.caption}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* 8. Faculties */}
-      <section className="section-pad">
-        <div className="container-app">
-          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-            <SectionHeading eyebrow="Our Mentors" title="Faculties" />
-            <Link to="/faculties" className="btn-outline">View All Faculties</Link>
-          </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {faculties.map((f) => (
-              <div key={f.id} className="card overflow-hidden text-center">
-                <img src={f.photo} alt={f.name} className="w-full h-48 object-cover" />
-                <div className="p-4">
-                  <h3 className="font-bold text-navy">{f.name}</h3>
-                  <p className="text-xs text-gold-dark font-semibold">{f.subject}</p>
-                  <p className="text-xs text-muted mt-1">{f.exp}</p>
-                </div>
-              </div>
-            ))}
+          <div className="p-5">
+            <h3 className="font-bold text-navy mb-1.5 transition-colors duration-300 group-hover:text-[#F0A500]">
+              {c.name}
+            </h3>
+
+            <p className="text-sm text-muted mb-3">
+              {c.desc}
+            </p>
+
+            <div className="flex justify-between items-center text-xs text-muted mb-4">
+              <span>{c.duration}</span>
+              <span className="font-bold text-navy">
+                {c.fee}
+              </span>
+            </div>
+
+            <Link
+              to="/register"
+              className="btn-primary w-full justify-center transition-transform duration-300 group-hover:scale-[1.02]"
+            >
+              Enroll Now
+            </Link>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+
+    {/* View All Button */}
+    <div className="flex justify-center mt-10">
+      <Link to="/courses" className="btn-outline">
+        View All Courses
+      </Link>
+    </div>
+
+  </div>
+</section>
+
+   {/* 6. School Exam Toppers */}
+<section className="section-pad">
+  <div className="container-app">
+
+    {/* Center Heading */}
+    <SectionHeading
+      eyebrow="Hall of Fame"
+      title="Our Toppers"
+      center
+    />
+
+    {/* Toppers Grid */}
+    <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+      {toppers.slice(0, 4).map((t) => (
+        <div
+          key={t.id}
+          className="
+            card
+            overflow-hidden
+            text-center
+            relative
+            group
+            transition-all
+            duration-500
+            hover:-translate-y-2
+            hover:shadow-2xl
+            hover:ring-2
+            hover:ring-[#F0A500]/40
+          "
+        >
+          {/* Score Badge */}
+          <div className="absolute top-3 right-3 bg-ribbon text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow transition-transform duration-300 group-hover:scale-110">
+            {t.score}
+          </div>
+
+          {/* Student Image */}
+          <img
+            src={t.photo}
+            alt={t.name}
+            className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+
+          {/* Content */}
+          <div className="p-4">
+            <h3 className="font-bold text-navy transition-colors duration-300 group-hover:text-[#F0A500]">
+              {t.name}
+            </h3>
+
+            <p className="text-xs text-muted">
+              Class {t.class} · {t.center}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* View All Button */}
+    <div className="flex justify-center mt-10">
+      <Link to="/toppers" className="btn-outline">
+        View All Toppers
+      </Link>
+    </div>
+
+  </div>
+</section>
+
+  {/* 7. Gallery */}
+<section className="section-pad bg-cream">
+  <div className="container-app">
+
+    {/* Center Heading */}
+    <SectionHeading
+      eyebrow="Moments"
+      title="Gallery"
+      center
+    />
+
+    {/* Gallery Grid */}
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+      {gallery.slice(0, 4).map((g) => (
+        <div
+          key={g.id}
+          className="
+            relative
+            rounded-xl
+            overflow-hidden
+            group
+            h-44
+            transition-all
+            duration-500
+            hover:-translate-y-2
+            hover:shadow-2xl
+            hover:ring-2
+            hover:ring-[#F0A500]/40
+          "
+        >
+          <img
+            src={g.image}
+            alt={g.caption}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+
+          <div className="absolute inset-0 bg-navy-dark/0 group-hover:bg-navy-dark/50 transition-colors duration-500 flex items-end p-3">
+            <p className="text-white text-xs font-semibold opacity-0 translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              {g.caption}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* View All Button */}
+    <div className="flex justify-center mt-10">
+      <Link to="/gallery" className="btn-outline">
+        View All Gallery
+      </Link>
+    </div>
+
+  </div>
+</section>
+
+  {/* 8. Faculties */}
+<section className="section-pad">
+  <div className="container-app">
+
+    {/* Center Heading */}
+    <SectionHeading
+      eyebrow="Our Mentors"
+      title="Experties"
+      center
+    />
+
+    {/* Faculties Grid */}
+    <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+      {faculties.map((f) => (
+        <div
+          key={f.id}
+          className="
+            card
+            overflow-hidden
+            text-center
+            group
+            transition-all
+            duration-500
+            hover:-translate-y-2
+            hover:shadow-2xl
+            hover:ring-2
+            hover:ring-[#F0A500]/40
+          "
+        >
+          <img
+            src={f.photo}
+            alt={f.name}
+            className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+
+          <div className="p-4">
+            <h3 className="font-bold text-navy transition-colors duration-300 group-hover:text-[#F0A500]">
+              {f.name}
+            </h3>
+
+            <p className="text-xs text-gold-dark font-semibold transition-colors duration-300 group-hover:text-[#F0A500]">
+              {f.subject}
+            </p>
+
+            <p className="text-xs text-muted mt-1">
+              {f.exp}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* View All Button */}
+    <div className="flex justify-center mt-10">
+      <Link to="/faculties" className="btn-outline">
+        View All Faculties
+      </Link>
+    </div>
+
+  </div>
+</section>
 
       {/* 9. Student Testimonials */}
       <section className="section-pad bg-navy">

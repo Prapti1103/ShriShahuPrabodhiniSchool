@@ -88,8 +88,7 @@ export default function Navbar() {
       {/* Top strip */}
       <div className="hidden md:flex bg-navy-dark text-white/80 text-xs">
         <div className="container-app flex justify-between items-center py-1.5">
-          <span className="flex items-center gap-1.5"><Phone size={12} /> 020-24451234 | info@ssprabodhini.org</span>
-          <span>Sankalp Scholarship Exam 2026 Registrations Open</span>
+          <span className="flex items-center gap-3.0"><Phone size={12} /> 020-24451234   |   info@ssprabodhini.org    Sankalp Scholarship Exam 2026 Registrations Open</span>
         </div>
       </div>
 
@@ -126,7 +125,7 @@ export default function Navbar() {
             <NavLink to="/awards" className={navItemClass}>Awards</NavLink>
             <NavLink to="/toppers" className={navItemClass}>Toppers</NavLink>
             <NavLink to="/gallery" className={navItemClass}>Gallery</NavLink>
-            <NavLink to="/faculties" className={navItemClass}>Faculties</NavLink>
+            <NavLink to="/faculties" className={navItemClass}>Experties</NavLink>
             <NavLink to="/testimonials" className={navItemClass}>Testimonial</NavLink>
             <NavLink to="/contact-us" className={navItemClass}>
   Contact 
